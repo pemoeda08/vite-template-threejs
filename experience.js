@@ -18,6 +18,7 @@ export class Experience {
         this.renderer = new WebGLRenderer({
             canvas: canvasEl
         });
+        this.renderer.outputColorSpace = SRGBColorSpace;
         this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         this.renderer.setSize(this.width, this.height);
         this.renderer.setClearColor(0x000000, 1.0);
@@ -49,8 +50,8 @@ export class Experience {
     resize() {
         this.container.width = window.innerWidth;
         this.container.height = window.innerHeight;
-        this.width = this.container.clientWidth;
-        this.height = this.container.clientHeight;
+        this.width = this.container.width;
+        this.height = this.container.height;
         this.renderer.setSize(this.width, this.height);
         this.renderer.setPixelRatio(this.width / this.height);
         this.camera.aspect = this.width / this.height;
